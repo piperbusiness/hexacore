@@ -1,1 +1,73 @@
-# docker-compose mit frontend/backend/db/ollama/caddy
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hexacore
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - hexanet
+
+  backend:
+    build: ./backend
+    container_name: hexacore_backend
+    restart: always
+    env_file:
+      - ../.env
+    depends_on:
+      - db
+    networks:
+      - hexanet
+
+  frontend:
+    build:
+      context: ./frontend-vue
+    container_name: hexacore_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - hexanet
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - hexanet
+
+  caddy:
+    image: caddy:latest
+    container_name: hexacore_caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - hexanet
+
+volumes:
+  postgres_data:
+  ollama_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  hexanet:
+    driver: bridge

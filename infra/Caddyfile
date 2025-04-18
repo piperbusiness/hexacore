@@ -1,3 +1,8 @@
 chat.piper.business {
   reverse_proxy backend:8000
+  encode gzip
+  log {
+    output file /var/log/caddy/access.log
+    format console
+  }
 }
