@@ -1,0 +1,1 @@
+HexaCore – KI-Plattform für Beratung & Wissensintegration

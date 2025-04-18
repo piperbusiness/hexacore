@@ -1,0 +1,1 @@
+<!-- App.vue – Vue-Komponente wird hier eingefügt -->
