@@ -1,1 +1,1 @@
-# main.py – Backend wird hier eingefügt
+# final main.py Inhalt (kommt von GPT)

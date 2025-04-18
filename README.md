@@ -1,1 +1,2 @@
-HexaCore – KI-Plattform für Beratung & Wissensintegration
+# HexaCore – Final Release
+Mit Docker, Vue, FastAPI und PostgreSQL

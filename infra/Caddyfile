@@ -1,0 +1,3 @@
+chat.piper.business {
+  reverse_proxy backend:8000
+}
