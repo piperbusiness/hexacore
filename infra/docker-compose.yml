@@ -14,7 +14,8 @@ services:
       - hexanet
 
   backend:
-    build: ./backend
+    build: ../backend
+>>>>>>> ae79c6d (Added Dockerfiles and updated infrastructure configs on VPS)
     container_name: hexacore_backend
     restart: always
     env_file:
@@ -26,7 +27,8 @@ services:
 
   frontend:
     build:
-      context: ./frontend-vue
+      context: ../frontend-vue
+>>>>>>> ae79c6d (Added Dockerfiles and updated infrastructure configs on VPS)
     container_name: hexacore_frontend
     restart: always
     ports:
@@ -71,3 +73,7 @@ volumes:
 networks:
   hexanet:
     driver: bridge
+<<<<<<< HEAD
+=======
+# docker-compose mit frontend/backend/db/ollama/caddy
+>>>>>>> ae79c6d (Added Dockerfiles and updated infrastructure configs on VPS)

@@ -1,5 +1,9 @@
 fastapi
-uvicorn
-psycopg2-binary
+uvicorn[standard]
 python-multipart
-...
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+python-dotenv
+llama-index
+ollama
